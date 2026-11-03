@@ -1,0 +1,153 @@
+/* ==========================================================================
+   青冥集 · theme-guofeng.css
+   古风主题：宣纸、远山、中国蓝
+   ========================================================================== */
+
+html[data-theme="guofeng"] {
+  color-scheme: light;
+  scrollbar-color: rgba(6, 82, 121, .38) #E6F1F4;
+
+  --paper: #EDF5F6;
+  --paper-2: #F6FBFB;
+  --ink: #12313F;
+  --ink-soft: #33525F;
+  --ink-faint: #6B8590;
+
+  --line: rgba(6, 82, 121, .14);
+  --line-strong: rgba(6, 82, 121, .32);
+
+  --accent: #065279;      /* 靛蓝 */
+  --accent-2: #177CB0;    /* 靛青 */
+  --accent-3: #4C8DAE;    /* 群青 */
+  --glow: rgba(48, 223, 243, .5);
+  --seal: #A63A2E;        /* 朱砂 */
+  --on-accent: #F7FCFD;
+
+  --card: rgba(255, 255, 255, .58);
+  --head-bg: rgba(238, 246, 247, .93);
+  --btn-bg: rgba(255, 255, 255, .55);
+  --quote-bg: rgba(6, 82, 121, .045);
+  --note-bg: rgba(23, 124, 176, .055);
+  --track-bg: rgba(6, 82, 121, .13);
+  --thumb-bg: linear-gradient(180deg, #FFFFFF, #DCEEF2);
+  --thumb-ink: #065279;
+
+  --shadow: 0 18px 44px -30px rgba(6, 60, 90, .55);
+  --shadow-hover: 0 26px 60px -32px rgba(6, 60, 90, .6);
+  --title-shadow: 0 1px 0 rgba(255, 255, 255, .65);
+
+  --select-bg: #177CB0;
+  --select-fg: #FFFFFF;
+
+  --code-bg: #0D2430;
+  --code-bar: #0A1E28;
+  --code-border: rgba(124, 243, 255, .14);
+  --code-fg: #D8E9EF;
+  --code-dim: #7C9AA7;
+  --tok-com: #6C8C99;
+  --tok-str: #8FD3B6;
+  --tok-key: #7FB7E0;
+  --tok-num: #E3B583;
+  --tok-fn: #C6A8E6;
+  --tok-tag: #8ECBF0;
+  --tok-att: #B7C7D2;
+  --tok-pun: #7E9AA6;
+
+  --inline-code-bg: rgba(6, 82, 121, .08);
+  --inline-code-fg: #0B4A6B;
+
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", "Songti SC", "STSong", "SimSun", serif;
+  --font-kai: "Kaiti SC", "KaiTi", "STKaiti", "楷体", "Noto Serif SC", "SimSun", serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "Consolas", "SFMono-Regular", "Courier New", monospace;
+}
+
+html[data-theme="guofeng"] body {
+  background:
+    radial-gradient(1200px 720px at 12% -8%, rgba(124, 243, 255, .16), transparent 62%),
+    radial-gradient(900px 640px at 92% 4%, rgba(76, 141, 174, .16), transparent 64%),
+    radial-gradient(1000px 800px at 50% 108%, rgba(23, 124, 176, .10), transparent 70%),
+    linear-gradient(180deg, #F3FAFA 0%, #EAF4F6 46%, #E4F0F3 100%);
+  background-attachment: fixed;
+}
+
+/* 纸纹：极细的纤维噪点 */
+html[data-theme="guofeng"] body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .28;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+}
+
+/* 天头一道极淡的靛青晕染 */
+html[data-theme="guofeng"] body::after {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: 320px;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(23, 124, 176, .10), transparent);
+}
+
+/* 远山与月 ---------------------------------------------------------------- */
+.hero__moon {
+  position: absolute;
+  top: 16%;
+  left: 50%;
+  width: clamp(120px, 16vw, 190px);
+  height: clamp(120px, 16vw, 190px);
+  margin-left: calc(clamp(120px, 16vw, 190px) / -2);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, .85), rgba(124, 243, 255, .16) 62%, transparent 72%);
+  box-shadow: 0 0 70px 18px rgba(124, 243, 255, .18);
+  z-index: -2;
+  opacity: .85;
+}
+.hero__art .m1 { fill: #4C8DAE; opacity: .16; }
+.hero__art .m2 { fill: #177CB0; opacity: .22; }
+.hero__art .m3 { fill: #065279; opacity: .30; }
+.hero__art .mist {
+  fill: none;
+  stroke: #7CF3FF;
+  stroke-width: 1;
+  opacity: .35;
+}
+
+html[data-theme="cosmos"] .hero__moon { display: none; }
+
+/* 页面装饰：卷轴细边 ------------------------------------------------------ */
+html[data-theme="guofeng"] .wrap { position: relative; }
+
+html[data-theme="guofeng"] .page-head::after {
+  content: "";
+  position: absolute;
+  right: -40px; top: -60px;
+  width: 340px; height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 243, 255, .22), transparent 66%);
+  pointer-events: none;
+}
+
+/* 卡片悬停时透出一点湖蓝 */
+html[data-theme="guofeng"] .section-card:hover {
+  background:
+    radial-gradient(280px 180px at 78% 0%, rgba(124, 243, 255, .22), transparent 70%),
+    rgba(255, 255, 255, .74);
+}
+
+html[data-theme="guofeng"] .post-item:hover {
+  background: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .3));
+}
+
+/* 页脚上方一线山影 */
+.site-foot::before {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}

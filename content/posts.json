@@ -1,0 +1,105 @@
+{
+  "site": {
+    "name": "青冥集",
+    "tagline": "山色入卷，云影成文",
+    "github": "https://github.com/wuyan2233",
+    "repo": "https://github.com/wuyan2233/myblog",
+    "updated": "2026-11-04"
+  },
+  "sections": [
+    {
+      "id": "articles",
+      "name": "文章",
+      "en": "ESSAYS",
+      "ordinal": "壹",
+      "desc": "长文与短札，写设计、写取舍，也写一些不成体系的想法。"
+    },
+    {
+      "id": "code",
+      "name": "代码",
+      "en": "CODE",
+      "ordinal": "贰",
+      "desc": "手写的片段与实验：CSS 变量、渲染器，以及那些足够小的造物。"
+    },
+    {
+      "id": "questions",
+      "name": "疑问",
+      "en": "QUESTIONS",
+      "ordinal": "叁",
+      "desc": "尚未想通的问题，与已经验证过的答案。"
+    },
+    {
+      "id": "resources",
+      "name": "资源",
+      "en": "RESOURCES",
+      "ordinal": "肆",
+      "desc": "色卡、工具、素材与书单。"
+    }
+  ],
+  "posts": [
+    {
+      "section": "articles",
+      "slug": "why-qingming",
+      "title": "开卷 · 为什么是一方青纸",
+      "date": "2026-11-04",
+      "tags": ["随笔", "设计"],
+      "excerpt": "开一个博客，最难的不是把页面做出来，而是决定它该长什么样。这一页写的是决定的过程：从一张配色图，到一座远山。"
+    },
+    {
+      "section": "articles",
+      "slug": "two-skins",
+      "title": "一纸两面：古风与星穹",
+      "date": "2026-11-02",
+      "tags": ["设计", "CSS"],
+      "excerpt": "同一副骨架，两套皮肤。古风是宣纸与远山，星穹是深空与星云。写下这套换肤方案是怎么被拆开的，以及为什么改的只是变量。"
+    },
+    {
+      "section": "code",
+      "slug": "css-vars-theme",
+      "title": "以尺规换天：CSS 变量与主题切换",
+      "date": "2026-10-30",
+      "tags": ["CSS", "实现"],
+      "excerpt": "不用切换样式表，也不用复制整个 CSS 文件。一套变量、一个属性、一次落笔，就够换来另一种天色。"
+    },
+    {
+      "section": "code",
+      "slug": "mini-markdown",
+      "title": "百二十行的墨戏：手写一个 Markdown 渲染器",
+      "date": "2026-10-28",
+      "tags": ["JavaScript", "实现"],
+      "excerpt": "不引 marked，也不打包。用一百多行正则与一个循环，把 Markdown 变成可读的篇章——顺便把代码块染上颜色。"
+    },
+    {
+      "section": "questions",
+      "slug": "static-cost",
+      "title": "静态博客真的更省事吗",
+      "date": "2026-10-26",
+      "tags": ["疑问", "取舍"],
+      "excerpt": "说静态博客「零维护」是过分乐观。它省掉的是服务器，换来的是另一些麻烦。这里把账算清楚。"
+    },
+    {
+      "section": "questions",
+      "slug": "video-loop",
+      "title": "循环播放一段星云，浏览器撑得住吗",
+      "date": "2026-10-24",
+      "tags": ["性能", "视频"],
+      "excerpt": "四 K 五分钟的原片将近四百兆，直接放上网页是灾难。我把它裁成二十秒、约 1.5 MB 的循环，实测下来，代价比想象小。"
+    },
+    {
+      "section": "resources",
+      "slug": "chinese-blues",
+      "title": "中国传统色 · 蓝色系",
+      "date": "2026-10-22",
+      "tags": ["色卡", "设计"],
+      "excerpt": "十四种蓝，从雪白到藏蓝。这张色卡是本站的全部配色来源，点一下色块即可复制色值。"
+    },
+    {
+      "section": "resources",
+      "slug": "desk-tools",
+      "title": "案头：凿子与纸",
+      "date": "2026-10-20",
+      "tags": ["工具", "书单"],
+      "excerpt": "做这个小站实际用到的东西。不多，但每一样都用得很顺手。"
+    }
+  ]
+}

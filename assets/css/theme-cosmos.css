@@ -1,0 +1,221 @@
+/* ==========================================================================
+   青冥集 · theme-cosmos.css
+   星穹主题：深空、星云、循环影像
+   ========================================================================== */
+
+html[data-theme="cosmos"] {
+  color-scheme: dark;
+  background: #04070F;
+  scrollbar-color: rgba(124, 243, 255, .26) #05080F;
+
+  --paper: #04070F;
+  --paper-2: #060C1A;
+  --ink: #E9F4FF;
+  --ink-soft: #A9C3E2;
+  --ink-faint: #6E88AC;
+
+  --line: rgba(124, 243, 255, .12);
+  --line-strong: rgba(124, 243, 255, .34);
+
+  --accent: #30DFF3;      /* 湖蓝 */
+  --accent-2: #7CF3FF;    /* 蔚蓝 */
+  --accent-3: #4B5CC4;    /* 宝蓝 */
+  --glow: rgba(48, 223, 243, .6);
+  --seal: #C0473A;
+  --on-accent: #04121A;
+
+  --card: rgba(9, 17, 36, .52);
+  --head-bg: rgba(5, 8, 17, .84);
+  --btn-bg: rgba(12, 22, 44, .55);
+  --quote-bg: rgba(48, 223, 243, .05);
+  --note-bg: rgba(75, 92, 196, .14);
+  --track-bg: rgba(124, 243, 255, .14);
+  --thumb-bg: linear-gradient(180deg, #101A38, #1B2A55);
+  --thumb-ink: #7CF3FF;
+
+  --shadow: 0 22px 60px -36px rgba(0, 210, 255, .55);
+  --shadow-hover: 0 30px 70px -34px rgba(48, 223, 243, .55);
+  --title-shadow: 0 0 34px rgba(48, 223, 243, .35), 0 0 96px rgba(75, 92, 196, .35);
+
+  --select-bg: #30DFF3;
+  --select-fg: #04121A;
+
+  --code-bg: rgba(5, 10, 22, .82);
+  --code-bar: rgba(10, 18, 38, .9);
+  --code-border: rgba(124, 243, 255, .18);
+  --code-fg: #DDF3FF;
+  --code-dim: #7E9CC8;
+  --tok-com: #5F7FA8;
+  --tok-str: #8FE3C8;
+  --tok-key: #8FC7FF;
+  --tok-num: #F0B98A;
+  --tok-fn: #CBB2FF;
+  --tok-tag: #7CF3FF;
+  --tok-att: #A9C3E2;
+  --tok-pun: #7E9CC8;
+
+  --inline-code-bg: rgba(124, 243, 255, .10);
+  --inline-code-fg: #9BE9FF;
+
+  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", "Songti SC", "STSong", "SimSun", serif;
+  --font-kai: "Kaiti SC", "KaiTi", "STKaiti", "楷体", "Noto Serif SC", "SimSun", serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", "Consolas", "SFMono-Regular", "Courier New", monospace;
+}
+
+html[data-theme="cosmos"] body {
+  background: transparent;
+  color: var(--ink);
+}
+
+/* 背景层：星云影像 + 光幕 + 星子 ------------------------------------------ */
+.cosmos-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -3;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s;
+  background: #04070F;
+  pointer-events: none;
+}
+html[data-theme="cosmos"] .cosmos-bg { opacity: 1; visibility: visible; }
+
+.cosmos-bg video {
+  position: absolute;
+  inset: -2%;
+  width: 104%;
+  height: 104%;
+  object-fit: cover;
+  object-position: 50% 46%;
+  filter: brightness(.76) saturate(1.14) contrast(1.05);
+  transform: scale(1.02);
+  animation: drift 46s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: scale(1.02) translate3d(0, 0, 0); }
+  to { transform: scale(1.09) translate3d(0, -1.2%, 0); }
+}
+
+.cosmos-bg__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 8%, rgba(4, 7, 15, .12) 0%, rgba(4, 7, 15, .44) 45%, rgba(3, 5, 12, .90) 100%),
+    linear-gradient(180deg, rgba(3, 6, 14, .78) 0%, rgba(3, 6, 14, .34) 34%, rgba(3, 6, 14, .72) 78%, #04070F 100%);
+}
+
+.cosmos-bg__aurora {
+  position: absolute;
+  inset: -10%;
+  mix-blend-mode: screen;
+  opacity: .5;
+  background:
+    radial-gradient(38% 30% at 18% 24%, rgba(75, 92, 196, .45), transparent 70%),
+    radial-gradient(32% 26% at 82% 18%, rgba(48, 223, 243, .30), transparent 70%),
+    radial-gradient(40% 34% at 64% 78%, rgba(59, 46, 126, .40), transparent 72%);
+  animation: aurora 26s ease-in-out infinite alternate;
+  filter: blur(6px);
+}
+@keyframes aurora {
+  from { transform: translate3d(-2%, -1%, 0) scale(1); opacity: .38; }
+  to   { transform: translate3d(2%, 1.5%, 0) scale(1.08); opacity: .58; }
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: .9;
+}
+
+/* 顶栏与页脚 */
+html[data-theme="cosmos"] .site-head {
+  background: var(--head-bg);
+  box-shadow: 0 1px 0 rgba(124, 243, 255, .06);
+}
+html[data-theme="cosmos"] .brand-name b { text-shadow: 0 0 26px rgba(48, 223, 243, .4); }
+html[data-theme="cosmos"] .nav a[aria-current="page"] { text-shadow: 0 0 18px rgba(48, 223, 243, .55); }
+
+html[data-theme="cosmos"] .seal {
+  box-shadow: inset 0 0 0 1.5px rgba(255, 250, 244, .5), 0 0 24px -6px rgba(192, 71, 58, .75);
+}
+
+/* 卡片：磨砂玻璃 */
+html[data-theme="cosmos"] .section-card,
+html[data-theme="cosmos"] .pager a,
+html[data-theme="cosmos"] .swatch__meta {
+  background:
+    linear-gradient(160deg, rgba(124, 243, 255, .07), rgba(9, 17, 36, .42) 42%, rgba(9, 17, 36, .58));
+  backdrop-filter: blur(12px) saturate(1.1);
+  -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  border-color: var(--line);
+}
+html[data-theme="cosmos"] .section-card::after { border-color: rgba(124, 243, 255, .10); }
+html[data-theme="cosmos"] .section-card:hover {
+  background:
+    radial-gradient(300px 200px at 78% 0%, rgba(48, 223, 243, .16), transparent 70%),
+    linear-gradient(160deg, rgba(124, 243, 255, .09), rgba(9, 17, 36, .5));
+  box-shadow: var(--shadow-hover);
+}
+
+html[data-theme="cosmos"] .post-item { border-bottom-color: rgba(124, 243, 255, .10); }
+html[data-theme="cosmos"] .post-item:hover { background: linear-gradient(90deg, rgba(48, 223, 243, .07), transparent 70%); }
+html[data-theme="cosmos"] .post-item:hover h3 { text-shadow: 0 0 22px rgba(48, 223, 243, .45); }
+
+html[data-theme="cosmos"] .hero__art { opacity: 0; }
+html[data-theme="cosmos"] .hero__rule { color: var(--accent); opacity: .7; }
+html[data-theme="cosmos"] .hero__title {  background: linear-gradient(180deg, #FFFFFF 8%, #BFE6FF 46%, #7CF3FF 78%, #4B5CC4 128%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: none;
+  filter: drop-shadow(0 0 32px rgba(48, 223, 243, .35));
+}
+html[data-theme="cosmos"] .hero__kicker { color: var(--accent); }
+
+html[data-theme="cosmos"] .btn--primary {
+  color: #04121A;
+  background: linear-gradient(120deg, #7CF3FF, #30DFF3 55%, #4B5CC4 130%);
+  border-color: transparent;
+  box-shadow: 0 16px 40px -22px rgba(124, 243, 255, .9);
+}
+html[data-theme="cosmos"] .btn--primary:hover {
+  color: #04121A;
+  filter: brightness(1.08);
+}
+
+html[data-theme="cosmos"] .page-head::after {
+  content: "";
+  position: absolute;
+  right: -60px; top: -120px;
+  width: 460px; height: 460px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(48, 223, 243, .16), rgba(75, 92, 196, .08) 44%, transparent 68%);
+  pointer-events: none;
+}
+
+html[data-theme="cosmos"] .prose h2::before { background: var(--accent); box-shadow: 0 0 14px rgba(48, 223, 243, .8); }
+html[data-theme="cosmos"] .prose blockquote { background: rgba(9, 17, 36, .5); }
+html[data-theme="cosmos"] .prose code { box-shadow: inset 0 0 0 1px rgba(124, 243, 255, .08); }
+html[data-theme="cosmos"] .note { background: rgba(9, 17, 36, .5); }
+html[data-theme="cosmos"] .toc a.is-active { text-shadow: 0 0 14px rgba(48, 223, 243, .6); }
+
+html[data-theme="cosmos"] .site-foot {
+  background: linear-gradient(180deg, transparent, rgba(3, 5, 12, .7));
+}
+html[data-theme="cosmos"] .to-top,
+html[data-theme="cosmos"] .theme-switch { backdrop-filter: blur(10px); }
+
+/* 切换主题时的一次性过渡 */
+html.is-switching,
+html.is-switching body,
+html.is-switching .section-card,
+html.is-switching .post-item,
+html.is-switching .site-head,
+html.is-switching .prose,
+html.is-switching .btn {
+  transition: background-color .7s ease, background .7s ease, color .45s ease,
+              border-color .7s ease, box-shadow .7s ease, filter .7s ease !important;
+}

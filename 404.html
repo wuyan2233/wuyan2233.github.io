@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="guofeng">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>未寻得此页 · 青冥集</title>
+<meta name="theme-color" content="#EDF5F6">
+<link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/theme-guofeng.css">
+<link rel="stylesheet" href="assets/css/theme-cosmos.css">
+<style>
+  .notfound{min-height:78vh;display:grid;place-items:center;text-align:center;padding:80px 24px}
+  .notfound h1{font-size:clamp(4rem,16vw,9rem);margin:0;letter-spacing:.16em;opacity:.14;font-weight:500;line-height:1}
+  .notfound p{margin:6px 0 34px;color:var(--ink-soft);letter-spacing:.2em;font-family:var(--font-kai)}
+</style>
+</head>
+<body>
+<div class="cosmos-bg" aria-hidden="true">
+  <video id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
+  <div class="cosmos-bg__veil"></div>
+  <div class="cosmos-bg__aurora"></div>
+  <canvas id="stars"></canvas>
+</div>
+<header class="site-head">
+  <div class="wrap head-inner">
+    <a class="brand" href="index.html"><span class="seal"><span>青<br>冥</span></span><span class="brand-name"><b>青冥集</b><small>QINGMING JI</small></span></a>
+    <nav class="nav" aria-label="主导航">
+      <a href="articles.html">文章</a><a href="code.html">代码</a><a href="questions.html">疑问</a><a href="resources.html">资源</a>
+    </nav>
+    <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="切换风格">
+      <span class="theme-switch__label" data-theme-label>古风</span>
+      <span class="theme-switch__track" aria-hidden="true"><span class="theme-switch__thumb">
+        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8 8.6 8.6 0 1 0 20.2 14.6Z"/></svg>
+      </span></span>
+    </button>
+  </div>
+</header>
+<main class="notfound">
+  <div>
+    <h1>四〇四</h1>
+    <p>此页已随云影散去</p>
+    <a class="btn btn--primary" href="index.html">回到卷首</a>
+  </div>
+</main>
+<script src="assets/js/stars.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/markdown.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
