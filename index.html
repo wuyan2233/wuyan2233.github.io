@@ -1,248 +1,160 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="guofeng">
+<html lang="zh-CN" data-theme="cosmos">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>青冥集 · 山色入卷，云影成文</title>
-<meta name="description" content="青冥集：一间以中国传统色·蓝色系写就的小站。文章、代码、疑问、资源四卷，可一键换作星穹。">
-<meta name="theme-color" content="#EDF5F6">
+<title>无言 · 笔记与专栏</title>
+<meta name="description" content="一个安静的个人博客：前端、设计、工具与阅读的笔记，按时间与标签整理。">
+<meta name="theme-color" content="#05070F">
 <meta property="og:type" content="website">
-<meta property="og:title" content="青冥集">
-<meta property="og:description" content="山色入卷，云影成文。古风与星穹，一纸两面。">
+<meta property="og:title" content="无言 · 笔记与专栏">
+<meta property="og:description" content="一个安静的个人博客：前端、设计、工具与阅读的笔记，按时间与标签整理。">
 <link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 <link rel="stylesheet" href="assets/css/theme-cosmos.css">
+<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 </head>
 <body data-page="home">
 
-<div class="cosmos-bg" aria-hidden="true">
-  <video id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
-  <div class="cosmos-bg__veil"></div>
-  <div class="cosmos-bg__aurora"></div>
+<div class="scene" aria-hidden="true">
+  <video class="scene__video" id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
+  <div class="scene__photo"></div>
+  <div class="scene__veil"></div>
+  <div class="scene__grid"></div>
   <canvas id="stars"></canvas>
+  <canvas id="petals"></canvas>
 </div>
+<div class="progress" aria-hidden="true"></div>
 
 <header class="site-head">
   <div class="wrap head-inner">
-    <a class="brand" href="index.html" aria-label="青冥集 · 回到卷首">
-      <span class="seal"><span>青<br>冥</span></span>
-      <span class="brand-name"><b>青冥集</b><small>QINGMING JI</small></span>
+    <button class="style-switch" type="button" data-style-toggle aria-pressed="false" aria-label="切换背景风格">
+      <span class="style-switch__icons" aria-hidden="true">
+        <svg class="i-space" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(-22 12 12)"/></svg>
+        <svg class="i-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 18c3.5-6 6.5-9 9-9 2.6 0 4 2 6 2 1.4 0 2.4-.6 3-1.4"/><path d="M3 21h18"/></svg>
+      </span>
+      <span class="style-switch__label">背景 · <span data-style-label>深空</span></span>
+    </button>
+    <a class="brand" href="index.html" aria-label="无言 主页">
+      <span class="brand__mark">言</span>
+      <span class="brand__text"><span class="brand__name">无言</span><span class="brand__sub">WUYAN · NOTES</span></span>
     </a>
     <nav class="nav" aria-label="主导航">
-      <a href="articles.html">文章</a>
-      <a href="code.html">代码</a>
-      <a href="questions.html">疑问</a>
-      <a href="resources.html">资源</a>
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
     </nav>
-    <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="当前为古风风格，点击切换为星穹">
-      <span class="theme-switch__label" data-theme-label>古风</span>
-      <span class="theme-switch__track" aria-hidden="true">
-        <span class="theme-switch__thumb">
-          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg>
-          <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8 8.6 8.6 0 1 0 20.2 14.6Z"/></svg>
-        </span>
-      </span>
-    </button>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <div class="hero__moon" aria-hidden="true"></div>
-    <div class="hero__art" aria-hidden="true">
-      <svg viewBox="0 0 1440 460" preserveAspectRatio="none">
-        <path class="m1" d="M0,300 C90,262 150,306 232,286 C316,266 360,214 452,236 C540,256 596,300 690,282 C780,265 842,214 930,232 C1020,250 1090,296 1180,278 C1280,258 1360,232 1440,254 L1440,460 L0,460 Z"/>
-        <path class="mist" d="M60,318 C260,300 420,330 620,312 C820,294 980,322 1180,306 C1290,297 1370,306 1420,300"/>
-        <path class="m2" d="M0,352 L86,306 L142,332 L214,268 L292,318 L360,292 L452,344 L540,300 L620,342 L706,286 L790,330 L862,306 L944,350 L1030,300 L1106,338 L1198,290 L1280,330 L1350,308 L1440,344 L1440,460 L0,460 Z"/>
-        <path class="mist" d="M120,362 C300,346 460,372 660,356 C860,340 1020,366 1220,352 C1320,345 1390,352 1430,346"/>
-        <path class="m3" d="M0,404 L70,376 L150,398 L246,362 L330,392 L420,368 L520,400 L610,372 L700,398 L800,366 L890,394 L980,370 L1080,398 L1170,374 L1260,396 L1350,378 L1440,398 L1440,460 L0,460 Z"/>
-      </svg>
-    </div>
-
-    <span class="hero__aside hero__aside--l" aria-hidden="true">云水无言</span>
-    <span class="hero__aside hero__aside--r" aria-hidden="true">星河有信</span>
-
-    <div class="hero__inner">
-      <p class="hero__kicker">中国传统色 · 蓝色系</p>
-      <h1 class="hero__title">青冥集</h1>
-      <div class="hero__rule" aria-hidden="true">
-        <i></i>
-        <svg width="26" height="12" viewBox="0 0 26 12" fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M1 6h7M18 6h7"/><circle cx="13" cy="6" r="2.4"/>
-        </svg>
-        <i></i>
-      </div>
-      <p class="hero__sub">山色入卷，云影成文</p>
-      <div class="hero__meta">
-        <span>文章 <i data-count="articles">—</i></span>
-        <span>代码 <i data-count="code">—</i></span>
-        <span>疑问 <i data-count="questions">—</i></span>
-        <span>资源 <i data-count="resources">—</i></span>
-      </div>
-      <div class="hero__actions">
-        <a class="btn btn--primary" href="#sections">阅 卷
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-        </a>
-        <button class="btn" type="button" data-theme-toggle>换 境
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="8.4"/><path d="M12 3.6a8.4 8.4 0 0 1 0 16.8Z" fill="currentColor" stroke="none"/></svg>
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="sections">
+    <div class="hero__photo" aria-hidden="true"></div>
     <div class="wrap">
-      <div class="sec-head">
-        <div class="sec-head__row">
-          <div>
-            <h2>四卷</h2>
-            <p>文章 · 代码 · 疑问 · 资源</p>
-          </div>
-          <a class="sec-head__more" href="articles.html">览全卷 <span aria-hidden="true">→</span></a>
+      <div class="hero__inner">
+        <p class="hero__eyebrow">Personal blog · Est. 2026</p>
+        <h1 class="hero__title">写下来的东西<br>才算真的想过</h1>
+        <p class="hero__lede">这里收录我关于前端、设计、工具与阅读的笔记。没有推荐算法，只有按时间排好的几页纸。</p>
+        <p class="hero__meta">
+          <span><b data-count="posts">—</b> 篇内容</span>
+          <span><b data-count="columns">—</b> 个专栏</span>
+          <span><b data-count="tags">—</b> 个标签</span>
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="notes.html">开始阅读
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <button class="btn" type="button" data-style-toggle>切换背景</button>
         </div>
       </div>
-
-      <div class="section-grid">
-        <a class="section-card reveal" href="articles.html">
-          <span class="section-card__num">卷 壹</span>
-          <svg class="section-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
-            <rect x="7" y="5" width="18" height="22" rx="2"/>
-            <path d="M11 11h10M11 15h10M11 19h6"/>
-            <path d="M7 9c-2 0-3 1-3 3v12c0 2 1 3 3 3h11" opacity=".45"/>
-          </svg>
-          <h3>文章</h3>
-          <p>长文与短札，写设计、写取舍，也写一些不成体系的想法。</p>
-          <div class="section-card__foot"><span>共 <b data-count="articles">—</b> 篇</span><span aria-hidden="true">→</span></div>
-        </a>
-
-        <a class="section-card reveal" href="code.html">
-          <span class="section-card__num">卷 贰</span>
-          <svg class="section-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M11 10 4 16l7 6M21 10l7 6-7 6M18 7l-4 18"/>
-          </svg>
-          <h3>代码</h3>
-          <p>手写的片段与实验：CSS 变量、渲染器、以及那些足够小的造物。</p>
-          <div class="section-card__foot"><span>共 <b data-count="code">—</b> 则</span><span aria-hidden="true">→</span></div>
-        </a>
-
-        <a class="section-card reveal" href="questions.html">
-          <span class="section-card__num">卷 叁</span>
-          <svg class="section-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
-            <circle cx="16" cy="16" r="11"/>
-            <path d="M12.6 12.4a3.5 3.5 0 1 1 4.6 3.3c-.8.3-1.2 1-1.2 1.8v.8"/>
-            <circle cx="16" cy="22" r="1.1" fill="currentColor" stroke="none"/>
-          </svg>
-          <h3>疑问</h3>
-          <p>尚未想通的问题，与已经验证过的答案。先记下来，再慢慢验证。</p>
-          <div class="section-card__foot"><span>共 <b data-count="questions">—</b> 问</span><span aria-hidden="true">→</span></div>
-        </a>
-
-        <a class="section-card reveal" href="resources.html">
-          <span class="section-card__num">卷 肆</span>
-          <svg class="section-card__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.2">
-            <path d="M6 11h20v15H6z"/><path d="M6 11 9 6h14l3 5M16 11v15"/>
-          </svg>
-          <h3>资源</h3>
-          <p>色卡、工具、素材与书单。用得到就取走，不必署名。</p>
-          <div class="section-card__foot"><span>共 <b data-count="resources">—</b> 件</span><span aria-hidden="true">→</span></div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--tight">
-    <div class="wrap wrap--narrow">
-      <div class="sec-head">
-        <div class="sec-head__row">
-          <div>
-            <h2>近稿</h2>
-            <p>最近写下的几页</p>
-          </div>
-          <a class="sec-head__more" href="articles.html">按卷查看 <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-      <div class="post-list" id="recent-list" aria-live="polite"></div>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
-      <div class="rule-orn" aria-hidden="true">
-        <svg width="40" height="14" viewBox="0 0 40 14" fill="none" stroke="currentColor" stroke-width="1">
-          <path d="M2 7h10M28 7h10"/><path d="M16 3c2 2 2 6 0 8M24 3c-2 2-2 6 0 8"/><circle cx="20" cy="7" r="1.2" fill="currentColor" stroke="none"/>
-        </svg>
-      </div>
-
-      <div class="section" style="padding-top:52px">
-        <div class="section-grid" style="grid-template-columns:repeat(3,1fr)">
-          <div class="reveal">
-            <p class="section-card__num">格 物</p>
-            <h3 style="font-size:19px;font-weight:500;letter-spacing:.14em;margin:14px 0 10px">两种气象</h3>
-            <p style="color:var(--ink-faint);font-size:14px;line-height:1.95;margin:0">
-              底色取自中国传统色的蓝色系：月白作纸，靛蓝作墨，湖蓝只作点睛。换作星穹时，同一副骨架换上深空的皮肤，星云影像在背后缓缓流转。
-            </p>
-          </div>
-          <div class="reveal">
-            <p class="section-card__num">技 艺</p>
-            <h3 style="font-size:19px;font-weight:500;letter-spacing:.14em;margin:14px 0 10px">不假构建</h3>
-            <p style="color:var(--ink-faint);font-size:14px;line-height:1.95;margin:0">
-              全站是手写的 HTML、CSS 与一小段 JavaScript：没有打包器，没有依赖。文章存作 Markdown，浏览器在读到它的那一刻才把它点化成篇。
-            </p>
-          </div>
-          <div class="reveal">
-            <p class="section-card__num">通 信</p>
-            <h3 style="font-size:19px;font-weight:500;letter-spacing:.14em;margin:14px 0 10px">在 GitHub</h3>
-            <p style="color:var(--ink-faint);font-size:14px;line-height:1.95;margin:0">
-              源码与文章都放在 GitHub，由 Pages 免费托管。若你也想在自己的机器上跑起来，README 里写了三步。
-            </p>
-          </div>
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-head__title">最近更新</h2>
+          <p class="sec-head__sub">按时间倒序，最新的在最上面</p>
         </div>
+        <a class="sec-head__more" href="notes.html">全部笔记 <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="post-list" id="latest"></div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <h2 class="sec-head__title">逛一逛</h2>
+          <p class="sec-head__sub">按主题、时间或关键词找到你想看的东西</p>
+        </div>
+      </div>
+      <div class="entry-grid">
+        <a class="entry reveal" href="notes.html">
+          <span class="entry__no">01 / NOTES</span>
+          <h3>笔记</h3>
+          <p>短一些的记录：一个想法、一段代码、一次踩坑。</p>
+          <span class="entry__foot"><span><b data-count="notes">—</b> 篇</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="entry reveal" href="columns.html">
+          <span class="entry__no">02 / COLUMNS</span>
+          <h3>专栏</h3>
+          <p>成系列的长文，一篇接一篇地讲完一件事。</p>
+          <span class="entry__foot"><span><b data-count="columns">—</b> 个系列</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="entry reveal" href="archives.html">
+          <span class="entry__no">03 / ARCHIVE</span>
+          <h3>归档</h3>
+          <p>按年月排好的全部内容，适合从头翻。</p>
+          <span class="entry__foot"><span>按时间</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="entry reveal" href="tags.html">
+          <span class="entry__no">04 / TAGS</span>
+          <h3>标签</h3>
+          <p>CSS、设计、工具、阅读……按兴趣逛。</p>
+          <span class="entry__foot"><span><b data-count="tags">—</b> 个标签</span><span aria-hidden="true">→</span></span>
+        </a>
+        <a class="entry reveal" href="search.html">
+          <span class="entry__no">05 / SEARCH</span>
+          <h3>搜索</h3>
+          <p>输入关键词，同时检索笔记、专栏、归档与标签。</p>
+          <span class="entry__foot"><span>即时结果</span><span aria-hidden="true">→</span></span>
+        </a>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="site-foot">
-  <div class="wrap">
-    <div class="foot__seal" aria-hidden="true">青</div>
-    <p class="foot__name">青冥集</p>
-    <p class="foot__note">山色入卷，云影成文。以中国传统色的蓝色系为纸，以文字为墨。<br>愿你在这里读到一点安静。</p>
-    <div class="foot__links">
-      <a href="articles.html">文章</a>
-      <a href="code.html">代码</a>
-      <a href="questions.html">疑问</a>
-      <a href="resources.html">资源</a>
-      <a href="https://github.com/wuyan2233" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <div class="wrap foot-inner">
+    <div>
+      <p class="foot__name">无言</p>
+      <p class="foot__note">关于前端、设计与工具的笔记。两套背景——深空与山水，可在左上角随时切换。</p>
     </div>
+    <nav class="foot__links" aria-label="页脚导航">
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
+      <a href="https://github.com/wuyan2233" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="wrap">
     <p class="foot__copy">© <span data-year>2026</span> 无言 · 手写 HTML / CSS / JavaScript，无构建工具</p>
   </div>
 </footer>
 
-<script src="assets/js/stars.js"></script>
-<script src="assets/js/theme.js"></script>
 <script src="assets/js/markdown.js"></script>
-<script src="assets/js/site.js"></script>
-<script>
-  document.querySelectorAll('[data-year]').forEach(function (el) { el.textContent = new Date().getFullYear(); });
-  (function () {
-    var list = document.getElementById('recent-list');
-    if (!list) return;
-    window.QM.manifest().then(function (data) {
-      var posts = data.posts.slice(0, 3);
-      list.innerHTML = posts.map(function (p) {
-        return '<article class="post-item reveal">' +
-          '<div class="post-item__date">' + window.QM.formatDate(p.date) + '</div>' +
-          '<div class="post-item__body"><h3><a href="post.html?s=' + p.section + '&slug=' + encodeURIComponent(p.slug) + '">' +
-          window.MD.esc(p.title) + '</a></h3><p>' + window.MD.esc(p.excerpt || '') + '</p>' +
-          '<div class="tags">' + (p.tags || []).map(function (t) { return '<span class="tag">' + window.MD.esc(t) + '</span>'; }).join('') + '</div></div>' +
-          '<span class="post-item__arrow" aria-hidden="true">→</span></article>';
-      }).join('');
-      list.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
-    }).catch(function () {
-      list.innerHTML = '<div class="empty">卷目未能读到</div>';
-    });
-  })();
-</script>
+<script src="assets/js/stars.js"></script>
+<script src="assets/js/petals.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>

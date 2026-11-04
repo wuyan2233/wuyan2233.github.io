@@ -1,164 +1,141 @@
-/* 青冥集 · theme.js — 换境：古风 ⇄ 星穹 */
+/* theme.js —— 两套背景风格的切换，默认深空 */
 (function () {
   'use strict';
 
-  var STORAGE_KEY = 'qm-theme';
+  var KEY = 'wuyan-theme';
   var root = document.documentElement;
   var video = null;
   var buttons = [];
   var labels = [];
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  function readStored() {
-    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+  function read() {
+    try { return localStorage.getItem(KEY); } catch (e) { return null; }
   }
-  function store(theme) {
-    try { localStorage.setItem(STORAGE_KEY, theme); } catch (e) {}
-  }
-
-  function pickSource() {
-    var small = window.matchMedia('(max-width: 760px)').matches;
-    return small ? 'assets/media/galaxy-960.mp4' : 'assets/media/galaxy.mp4';
+  function write(v) {
+    try { localStorage.setItem(KEY, v); } catch (e) {}
   }
 
-  function ensureVideo() {
+  function source() {
+    return window.matchMedia('(max-width: 760px)').matches
+      ? 'assets/media/galaxy-960.mp4'
+      : 'assets/media/galaxy.mp4';
+  }
+
+  function prepare() {
     if (!video) video = document.getElementById('galaxy');
-    if (!video) return;
-    if (!video.dataset.ready) {
-      video.preload = 'auto';
-      video.src = pickSource();
-      video.dataset.ready = '1';
-      video.load();
-    }
+    if (!video || video.dataset.ready) return;
+    video.preload = 'auto';
+    video.src = source();
+    video.dataset.ready = '1';
+    video.load();
   }
 
-  function playVideo() {
-    ensureVideo();
+  function play() {
+    prepare();
     if (!video || reduced.matches) return;
     video.muted = true;
     video.autoplay = true;
     video.setAttribute('playsinline', '');
     var p = video.play();
-    if (p && p.catch) p.catch(function () { /* 自动播放被拒时静默失败 */ });
+    if (p && p.catch) p.catch(function () {});
   }
 
-  function pauseVideo() {
+  function pause() {
     if (video && !video.paused) video.pause();
   }
 
   function apply(theme, opts) {
     opts = opts || {};
-    var isCosmos = theme === 'cosmos';
-    root.setAttribute('data-theme', isCosmos ? 'cosmos' : 'guofeng');
-    root.style.colorScheme = isCosmos ? 'dark' : 'light';
+    var space = theme === 'cosmos';
+    root.setAttribute('data-theme', space ? 'cosmos' : 'guofeng');
+    root.style.colorScheme = space ? 'dark' : 'light';
 
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', isCosmos ? '#04070F' : '#EDF5F6');
+    if (meta) meta.setAttribute('content', space ? '#05070F' : '#F4ECE6');
 
-    buttons.forEach(function (btn) {
-      btn.setAttribute('aria-pressed', isCosmos ? 'true' : 'false');
-      btn.setAttribute('aria-label', isCosmos ? '当前为星穹风格，点击切换为古风' : '当前为古风风格，点击切换为星穹');
-      btn.title = isCosmos ? '换作古风' : '换作星穹';
+    buttons.forEach(function (b) {
+      b.setAttribute('aria-pressed', space ? 'false' : 'true');
+      b.setAttribute('aria-label', space ? '当前背景：深空。点击切换为山水' : '当前背景：山水。点击切换为深空');
+      b.title = space ? '切换为山水背景' : '切换为深空背景';
     });
-    labels.forEach(function (el) { el.textContent = isCosmos ? '星穹' : '古风'; });
+    labels.forEach(function (l) { l.textContent = space ? '深空' : '山水'; });
 
-    if (isCosmos) { playVideo(); } else { pauseVideo(); }
-
-    document.dispatchEvent(new CustomEvent('qm:theme', { detail: { theme: isCosmos ? 'cosmos' : 'guofeng' } }));
-    if (!opts.silent) store(isCosmos ? 'cosmos' : 'guofeng');
+    if (space) play(); else pause();
+    document.dispatchEvent(new CustomEvent('themechange', { detail: { theme: space ? 'cosmos' : 'guofeng' } }));
+    if (!opts.silent) write(space ? 'cosmos' : 'guofeng');
   }
 
   function toggle() {
     var next = root.getAttribute('data-theme') === 'cosmos' ? 'guofeng' : 'cosmos';
-
-    root.classList.add('is-switching');
     apply(next);
-
-    var x = window.innerWidth - 60;
-    var y = 46;
-    var btn0 = buttons[0];
-    if (btn0) {
-      var r = btn0.getBoundingClientRect();
-      x = r.left + r.width / 2;
-      y = r.top + r.height / 2;
-    }
     var veil = document.createElement('div');
-    veil.className = 'theme-veil';
     veil.setAttribute('aria-hidden', 'true');
     veil.style.cssText = [
-      'position:fixed', 'inset:0', 'z-index:200', 'pointer-events:none',
-      'background:radial-gradient(circle at ' + x + 'px ' + y + 'px, rgba(124,243,255,.55), rgba(6,10,26,.35) 45%, transparent 70%)',
-      'opacity:0', 'transition:opacity .8s ease'
+      'position:fixed', 'inset:0', 'z-index:300', 'pointer-events:none',
+      'opacity:0', 'transition:opacity .55s ease',
+      'background:' + (next === 'cosmos'
+        ? 'radial-gradient(circle at 12% 6%, rgba(90,215,255,.55), rgba(5,7,15,.85) 62%)'
+        : 'radial-gradient(circle at 12% 6%, rgba(255,246,238,.95), rgba(244,236,230,.92) 62%)')
     ].join(';');
     document.body.appendChild(veil);
     requestAnimationFrame(function () {
-      veil.style.opacity = '0.85';
-      setTimeout(function () { veil.style.opacity = '0'; }, 220);
-      setTimeout(function () { veil.remove(); }, 1100);
+      veil.style.opacity = '.9';
+      setTimeout(function () { veil.style.opacity = '0'; }, 180);
+      setTimeout(function () { veil.remove(); }, 900);
     });
-
-    setTimeout(function () { root.classList.remove('is-switching'); }, 780);
   }
 
   function init() {
-    buttons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-toggle]'));
-    labels = Array.prototype.slice.call(document.querySelectorAll('[data-theme-label]'));
+    buttons = Array.prototype.slice.call(document.querySelectorAll('[data-style-toggle]'));
+    labels = Array.prototype.slice.call(document.querySelectorAll('[data-style-label]'));
     video = document.getElementById('galaxy');
 
-    var stored = readStored();
+    var stored = read();
     var forced = new URLSearchParams(location.search).get('theme');
     if (forced === 'cosmos' || forced === 'guofeng') {
       stored = forced;
-      store(forced);
+      write(forced);
       if (history.replaceState) {
-        var clean = location.pathname + location.hash;
-        history.replaceState(null, '', clean);
+        var clean = new URL(location.href);
+        clean.searchParams.delete('theme');
+        history.replaceState(null, '', clean.pathname + (clean.search || '') + clean.hash);
       }
     }
-    apply(stored === 'cosmos' ? 'cosmos' : 'guofeng', { silent: true });
+    apply(stored === 'guofeng' ? 'guofeng' : 'cosmos', { silent: true });
 
-    buttons.forEach(function (btn) { btn.addEventListener('click', toggle); });
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 't' && (e.metaKey || e.ctrlKey)) { e.preventDefault(); toggle(); }
-    });
+    buttons.forEach(function (b) { b.addEventListener('click', toggle); });
 
     document.addEventListener('visibilitychange', function () {
       if (root.getAttribute('data-theme') !== 'cosmos') return;
-      if (document.hidden) pauseVideo(); else playVideo();
+      if (document.hidden) pause(); else play();
     });
 
     if (reduced.addEventListener) {
       reduced.addEventListener('change', function () {
-        if (root.getAttribute('data-theme') === 'cosmos') {
-          if (reduced.matches) pauseVideo(); else playVideo();
-        }
+        if (root.getAttribute('data-theme') !== 'cosmos') return;
+        if (reduced.matches) pause(); else play();
       });
     }
 
-    var resizeTimer;
+    var t;
     window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
+      clearTimeout(t);
+      t = setTimeout(function () {
         if (!video || !video.dataset.ready) return;
-        var want = pickSource();
-        if (video.currentSrc.indexOf(want.replace('assets/media/', '')) === -1) {
-          var wasPlaying = !video.paused;
-          video.src = want;
-          video.dataset.ready = '1';
-          if (wasPlaying) playVideo();
-        }
-      }, 400);
+        if (video.currentSrc.indexOf('galaxy-960') > -1 === window.matchMedia('(max-width: 760px)').matches) return;
+        var was = !video.paused;
+        video.src = source();
+        video.dataset.ready = '1';
+        if (was) play();
+      }, 500);
     });
   }
 
   window.QM = window.QM || {};
-  window.QM.toggleTheme = toggle;
-  window.QM.getTheme = function () { return root.getAttribute('data-theme') || 'guofeng'; };
+  window.QM.toggleStyle = toggle;
+  window.QM.theme = function () { return root.getAttribute('data-theme') || 'cosmos'; };
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();

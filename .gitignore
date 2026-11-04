@@ -5,6 +5,6 @@ Desktop.ini
 .vscode/
 .idea/
 
-# 本地预览与临时文件
+# 本地与临时
 *.log
 node_modules/

@@ -1,52 +1,87 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="guofeng">
+<html lang="zh-CN" data-theme="cosmos">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>未寻得此页 · 青冥集</title>
-<meta name="theme-color" content="#EDF5F6">
+<title>页面不存在 · 无言</title>
+<meta name="description" content="这个页面不在了。">
+<meta name="theme-color" content="#05070F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="页面不存在 · 无言">
+<meta property="og:description" content="这个页面不在了。">
 <link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 <link rel="stylesheet" href="assets/css/theme-cosmos.css">
-<style>
-  .notfound{min-height:78vh;display:grid;place-items:center;text-align:center;padding:80px 24px}
-  .notfound h1{font-size:clamp(4rem,16vw,9rem);margin:0;letter-spacing:.16em;opacity:.14;font-weight:500;line-height:1}
-  .notfound p{margin:6px 0 34px;color:var(--ink-soft);letter-spacing:.2em;font-family:var(--font-kai)}
-</style>
+<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 </head>
-<body>
-<div class="cosmos-bg" aria-hidden="true">
-  <video id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
-  <div class="cosmos-bg__veil"></div>
-  <div class="cosmos-bg__aurora"></div>
+<body data-page="404">
+
+<div class="scene" aria-hidden="true">
+  <video class="scene__video" id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
+  <div class="scene__photo"></div>
+  <div class="scene__veil"></div>
+  <div class="scene__grid"></div>
   <canvas id="stars"></canvas>
+  <canvas id="petals"></canvas>
 </div>
+<div class="progress" aria-hidden="true"></div>
+
 <header class="site-head">
   <div class="wrap head-inner">
-    <a class="brand" href="index.html"><span class="seal"><span>青<br>冥</span></span><span class="brand-name"><b>青冥集</b><small>QINGMING JI</small></span></a>
-    <nav class="nav" aria-label="主导航">
-      <a href="articles.html">文章</a><a href="code.html">代码</a><a href="questions.html">疑问</a><a href="resources.html">资源</a>
-    </nav>
-    <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="切换风格">
-      <span class="theme-switch__label" data-theme-label>古风</span>
-      <span class="theme-switch__track" aria-hidden="true"><span class="theme-switch__thumb">
-        <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8 8.6 8.6 0 1 0 20.2 14.6Z"/></svg>
-      </span></span>
+    <button class="style-switch" type="button" data-style-toggle aria-pressed="false" aria-label="切换背景风格">
+      <span class="style-switch__icons" aria-hidden="true">
+        <svg class="i-space" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(-22 12 12)"/></svg>
+        <svg class="i-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 18c3.5-6 6.5-9 9-9 2.6 0 4 2 6 2 1.4 0 2.4-.6 3-1.4"/><path d="M3 21h18"/></svg>
+      </span>
+      <span class="style-switch__label">背景 · <span data-style-label>深空</span></span>
     </button>
+    <a class="brand" href="index.html" aria-label="无言 主页">
+      <span class="brand__mark">言</span>
+      <span class="brand__text"><span class="brand__name">无言</span><span class="brand__sub">WUYAN · NOTES</span></span>
+    </a>
+    <nav class="nav" aria-label="主导航">
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
+    </nav>
   </div>
 </header>
-<main class="notfound">
-  <div>
-    <h1>四〇四</h1>
-    <p>此页已随云影散去</p>
-    <a class="btn btn--primary" href="index.html">回到卷首</a>
-  </div>
+
+<main class="wrap" style="padding:120px 0 140px;text-align:center">
+  <p class="mono" style="color:var(--accent)">404</p>
+  <h1 style="font-family:var(--font-display);font-size:clamp(2rem,6vw,3.4rem);margin:14px 0 12px">这个页面不在了</h1>
+  <p style="color:var(--muted);margin:0 0 28px">可能是地址写错了，也可能是我把它删了。</p>
+  <a class="btn btn--primary" href="index.html">回到主页</a>
 </main>
-<script src="assets/js/stars.js"></script>
-<script src="assets/js/theme.js"></script>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <div>
+      <p class="foot__name">无言</p>
+      <p class="foot__note">关于前端、设计与工具的笔记。两套背景——深空与山水，可在左上角随时切换。</p>
+    </div>
+    <nav class="foot__links" aria-label="页脚导航">
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
+      <a href="https://github.com/wuyan2233" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="foot__copy">© <span data-year>2026</span> 无言 · 手写 HTML / CSS / JavaScript，无构建工具</p>
+  </div>
+</footer>
+
 <script src="assets/js/markdown.js"></script>
-<script src="assets/js/site.js"></script>
+<script src="assets/js/stars.js"></script>
+<script src="assets/js/petals.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>

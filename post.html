@@ -1,48 +1,52 @@
 <!doctype html>
-<html lang="zh-CN" data-theme="guofeng">
+<html lang="zh-CN" data-theme="cosmos">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>阅读 · 青冥集</title>
-<meta name="description" content="青冥集 · 一篇文章">
-<meta name="theme-color" content="#EDF5F6">
+<title>阅读 · 无言</title>
+<meta name="description" content="一篇文章。">
+<meta name="theme-color" content="#05070F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阅读 · 无言">
+<meta property="og:description" content="一篇文章。">
 <link rel="icon" href="assets/media/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 <link rel="stylesheet" href="assets/css/theme-cosmos.css">
+<link rel="stylesheet" href="assets/css/theme-guofeng.css">
 </head>
 <body data-page="post">
 
-<div class="cosmos-bg" aria-hidden="true">
-  <video id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
-  <div class="cosmos-bg__veil"></div>
-  <div class="cosmos-bg__aurora"></div>
+<div class="scene" aria-hidden="true">
+  <video class="scene__video" id="galaxy" muted loop playsinline preload="none" poster="assets/media/poster.jpg"></video>
+  <div class="scene__photo"></div>
+  <div class="scene__veil"></div>
+  <div class="scene__grid"></div>
   <canvas id="stars"></canvas>
+  <canvas id="petals"></canvas>
 </div>
-
 <div class="progress" aria-hidden="true"></div>
 
 <header class="site-head">
   <div class="wrap head-inner">
-    <a class="brand" href="index.html" aria-label="青冥集 · 回到卷首">
-      <span class="seal"><span>青<br>冥</span></span>
-      <span class="brand-name"><b>青冥集</b><small>QINGMING JI</small></span>
+    <button class="style-switch" type="button" data-style-toggle aria-pressed="false" aria-label="切换背景风格">
+      <span class="style-switch__icons" aria-hidden="true">
+        <svg class="i-space" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4.2"/><ellipse cx="12" cy="12" rx="10" ry="4.4" transform="rotate(-22 12 12)"/></svg>
+        <svg class="i-ink" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 18c3.5-6 6.5-9 9-9 2.6 0 4 2 6 2 1.4 0 2.4-.6 3-1.4"/><path d="M3 21h18"/></svg>
+      </span>
+      <span class="style-switch__label">背景 · <span data-style-label>深空</span></span>
+    </button>
+    <a class="brand" href="index.html" aria-label="无言 主页">
+      <span class="brand__mark">言</span>
+      <span class="brand__text"><span class="brand__name">无言</span><span class="brand__sub">WUYAN · NOTES</span></span>
     </a>
     <nav class="nav" aria-label="主导航">
-      <a href="articles.html">文章</a>
-      <a href="code.html">代码</a>
-      <a href="questions.html">疑问</a>
-      <a href="resources.html">资源</a>
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
     </nav>
-    <button class="theme-switch" type="button" data-theme-toggle aria-pressed="false" aria-label="当前为古风风格，点击切换为星穹">
-      <span class="theme-switch__label" data-theme-label>古风</span>
-      <span class="theme-switch__track" aria-hidden="true">
-        <span class="theme-switch__thumb">
-          <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 3v2.2M12 18.8V21M3 12h2.2M18.8 12H21M5.6 5.6l1.6 1.6M16.8 16.8l1.6 1.6M18.4 5.6l-1.6 1.6M7.2 16.8l-1.6 1.6"/></svg>
-          <svg class="i-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.2 14.6A8.4 8.4 0 0 1 9.4 3.8 8.6 8.6 0 1 0 20.2 14.6Z"/></svg>
-        </span>
-      </span>
-    </button>
   </div>
 </header>
 
@@ -51,59 +55,59 @@
     <article>
       <header class="article-head">
         <div class="article-head__meta">
-          <a href="articles.html" data-post-section>文章</a>
+          <a href="notes.html" data-post-kind>笔记</a>
           <span aria-hidden="true">·</span>
           <time data-post-date></time>
           <span aria-hidden="true">·</span>
           <span data-post-read>—</span>
         </div>
-        <h1 data-post-title>正在展卷…</h1>
+        <h1 data-post-title>正在载入…</h1>
         <p class="article-head__dek" data-post-dek></p>
         <div class="tags" data-post-tags></div>
       </header>
 
-      <div class="prose" data-article-body>
-        <p>正在展卷，请稍候。</p>
-      </div>
+      <div class="prose" data-article-body></div>
 
       <footer class="article-foot">
-        <div class="article-end-seal" aria-hidden="true">完</div>
-        <div>
-          <button class="btn" type="button" data-share style="padding:9px 16px;font-size:12.5px;letter-spacing:.16em">抄录此页链接</button>
-        </div>
+        <span>写于 <span data-post-date></span></span>
+        <a class="btn" href="notes.html" style="padding:8px 16px;font-size:13px">返回列表</a>
       </footer>
 
-      <nav class="pager" data-pager aria-label="前后篇"></nav>
+      <nav class="pager" data-pager aria-label="上一篇与下一篇"></nav>
     </article>
 
-    <aside class="toc" aria-label="目次">
-      <p class="toc__title">目 次</p>
+    <aside class="toc" aria-label="目录">
+      <p class="toc__title">目录</p>
       <ol id="toc-list"></ol>
     </aside>
   </div>
 </main>
 
 <footer class="site-foot">
-  <div class="wrap">
-    <div class="foot__seal" aria-hidden="true">青</div>
-    <p class="foot__name">青冥集</p>
-    <p class="foot__note">山色入卷，云影成文。以中国传统色的蓝色系为纸，以文字为墨。<br>愿你在这里读到一点安静。</p>
-    <div class="foot__links">
-      <a href="articles.html">文章</a>
-      <a href="code.html">代码</a>
-      <a href="questions.html">疑问</a>
-      <a href="resources.html">资源</a>
-      <a href="https://github.com/wuyan2233" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <div class="wrap foot-inner">
+    <div>
+      <p class="foot__name">无言</p>
+      <p class="foot__note">关于前端、设计与工具的笔记。两套背景——深空与山水，可在左上角随时切换。</p>
     </div>
+    <nav class="foot__links" aria-label="页脚导航">
+      <a href="index.html">主页</a>
+      <a href="notes.html">笔记</a>
+      <a href="columns.html">专栏</a>
+      <a href="archives.html">归档</a>
+      <a href="tags.html">标签</a>
+      <a href="search.html">搜索</a>
+      <a href="https://github.com/wuyan2233" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </nav>
+  </div>
+  <div class="wrap">
     <p class="foot__copy">© <span data-year>2026</span> 无言 · 手写 HTML / CSS / JavaScript，无构建工具</p>
   </div>
 </footer>
 
-<script src="assets/js/stars.js"></script>
-<script src="assets/js/theme.js"></script>
 <script src="assets/js/markdown.js"></script>
-<script src="assets/js/site.js"></script>
-<script src="assets/js/post.js"></script>
-<script>document.querySelectorAll('[data-year]').forEach(function(el){el.textContent=new Date().getFullYear();});</script>
+<script src="assets/js/stars.js"></script>
+<script src="assets/js/petals.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/app.js"></script>
 </body>
 </html>

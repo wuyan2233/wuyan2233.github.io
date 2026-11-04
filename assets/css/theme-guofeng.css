@@ -1,153 +1,243 @@
 /* ==========================================================================
-   青冥集 · theme-guofeng.css
-   古风主题：宣纸、远山、中国蓝
+   theme-guofeng.css —— 古风
+   暖纸、宋体、樱粉与灯笼红；背景取自「大明风华卷·其三 春时雨」
    ========================================================================== */
 
 html[data-theme="guofeng"] {
   color-scheme: light;
-  scrollbar-color: rgba(6, 82, 121, .38) #E6F1F4;
+  scrollbar-color: rgba(120, 92, 78, .35) #F1E8E1;
 
-  --paper: #EDF5F6;
-  --paper-2: #F6FBFB;
-  --ink: #12313F;
-  --ink-soft: #33525F;
-  --ink-faint: #6B8590;
+  --bg: #F4ECE6;
+  --text: #2A2420;
+  --muted: #7B6A5F;
 
-  --line: rgba(6, 82, 121, .14);
-  --line-strong: rgba(6, 82, 121, .32);
+  --line: rgba(74, 52, 42, .14);
+  --line-strong: rgba(74, 52, 42, .30);
 
-  --accent: #065279;      /* 靛蓝 */
-  --accent-2: #177CB0;    /* 靛青 */
-  --accent-3: #4C8DAE;    /* 群青 */
-  --glow: rgba(48, 223, 243, .5);
-  --seal: #A63A2E;        /* 朱砂 */
-  --on-accent: #F7FCFD;
+  --accent: #B4462F;        /* 灯笼红 */
+  --accent-strong: #C8553C;
+  --accent-2: #6E8A8A;      /* 水色 */
+  --on-accent: #FFF8F3;
 
-  --card: rgba(255, 255, 255, .58);
-  --head-bg: rgba(238, 246, 247, .93);
-  --btn-bg: rgba(255, 255, 255, .55);
-  --quote-bg: rgba(6, 82, 121, .045);
-  --note-bg: rgba(23, 124, 176, .055);
-  --track-bg: rgba(6, 82, 121, .13);
-  --thumb-bg: linear-gradient(180deg, #FFFFFF, #DCEEF2);
-  --thumb-ink: #065279;
+  --panel: rgba(255, 252, 248, .74);
+  --panel-hover: rgba(255, 253, 250, .9);
+  --row-hover: rgba(180, 70, 47, .035);
+  --head-bg: rgba(246, 239, 233, .88);
+  --btn-bg: rgba(255, 252, 248, .7);
+  --chip-bg: rgba(255, 252, 248, .6);
+  --hover-bg: rgba(74, 52, 42, .05);
+  --active-bg: rgba(180, 70, 47, .09);
+  --field-bg: rgba(255, 252, 248, .8);
+  --quote-bg: rgba(110, 138, 138, .08);
+  --note-bg: rgba(180, 70, 47, .06);
+  --focus-ring: rgba(180, 70, 47, .12);
 
-  --shadow: 0 18px 44px -30px rgba(6, 60, 90, .55);
-  --shadow-hover: 0 26px 60px -32px rgba(6, 60, 90, .6);
-  --title-shadow: 0 1px 0 rgba(255, 255, 255, .65);
+  --mark-bg: rgba(240, 185, 193, .55);
+  --mark-fg: #3A2620;
 
-  --select-bg: #177CB0;
-  --select-fg: #FFFFFF;
+  --select-bg: #B4462F;
+  --select-fg: #FFF8F3;
 
-  --code-bg: #0D2430;
-  --code-bar: #0A1E28;
-  --code-border: rgba(124, 243, 255, .14);
-  --code-fg: #D8E9EF;
-  --code-dim: #7C9AA7;
-  --tok-com: #6C8C99;
-  --tok-str: #8FD3B6;
-  --tok-key: #7FB7E0;
+  --code-bg: #2B2622;
+  --code-bar: #241F1C;
+  --code-border: rgba(255, 240, 225, .12);
+  --code-fg: #F2E7DC;
+  --code-dim: #A08D7E;
+  --tok-com: #8C7868;
+  --tok-str: #A8C6A0;
+  --tok-key: #E0A9A0;
   --tok-num: #E3B583;
-  --tok-fn: #C6A8E6;
-  --tok-tag: #8ECBF0;
-  --tok-att: #B7C7D2;
-  --tok-pun: #7E9AA6;
+  --tok-fn: #C9B8D8;
+  --tok-tag: #9CC7C7;
+  --tok-att: #C9B7A6;
+  --tok-pun: #8C7868;
 
-  --inline-code-bg: rgba(6, 82, 121, .08);
-  --inline-code-fg: #0B4A6B;
+  --inline-code-bg: rgba(74, 52, 42, .07);
+  --inline-code-fg: #8A3E2C;
 
-  --font-serif: "Noto Serif SC", "Source Han Serif SC", "Source Han Serif CN", "Songti SC", "STSong", "SimSun", serif;
-  --font-kai: "Kaiti SC", "KaiTi", "STKaiti", "楷体", "Noto Serif SC", "SimSun", serif;
-  --font-mono: "JetBrains Mono", "Cascadia Code", "Consolas", "SFMono-Regular", "Courier New", monospace;
+  --wrap: 1120px;
+  --gutter: 28px;
+  --head-h: 74px;
+  --r-card: 5px;
+  --r-btn: 3px;
+  --r-field: 3px;
+  --r-code: 5px;
+  --r-mark: 4px;
+  --r-nav: 3px;
+  --r-pill: 3px;
+
+  --font-display: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+  --font-body: "Songti SC", "STSong", "Noto Serif SC", "Source Han Serif SC", "SimSun", serif;
+  --font-ui: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", "Cascadia Code", Consolas, monospace;
+
+  --hero-title: clamp(3rem, 7.6vw, 5.2rem);
+  --hero-weight: 500;
+  --hero-ls: .14em;
+  --hero-pad: 112px 0 92px;
+  --hero-max: 820px;
+  --section-pad: 78px 0;
+  --page-head-pad: 76px 0 34px;
+  --article-pad: 54px 0 90px;
+  --fs-body: 17px;
+  --lh-body: 1.9;
+  --prose-size: 17.5px;
+  --prose-lh: 2.05;
+  --entry-title: 20px;
+  --row-title: 18.5px;
+  --sec-title: 26px;
+  --page-title: clamp(2.1rem, 4.6vw, 3rem);
+  --article-title: clamp(1.85rem, 4vw, 2.6rem);
+  --card-pad: 26px;
+  --grid-gap: 16px;
+  --card-glow: 0 18px 40px -30px rgba(74, 52, 42, .6);
+  --btn-glow: 0 14px 30px -20px rgba(74, 52, 42, .6);
+
+  --body-bg: #F4ECE6;
 }
 
 html[data-theme="guofeng"] body {
-  background:
-    radial-gradient(1200px 720px at 12% -8%, rgba(124, 243, 255, .16), transparent 62%),
-    radial-gradient(900px 640px at 92% 4%, rgba(76, 141, 174, .16), transparent 64%),
-    radial-gradient(1000px 800px at 50% 108%, rgba(23, 124, 176, .10), transparent 70%),
-    linear-gradient(180deg, #F3FAFA 0%, #EAF4F6 46%, #E4F0F3 100%);
-  background-attachment: fixed;
+  background: transparent;
 }
 
-/* 纸纹：极细的纤维噪点 */
-html[data-theme="guofeng"] body::before {
-  content: "";
-  position: fixed;
+/* 背景：壁纸 + 纸色薄罩 */
+html[data-theme="guofeng"] .scene__photo {
+  opacity: 1;
+  background-image: url("../media/shan-shui.jpg");
+  filter: saturate(.9) brightness(1.05) blur(2px);
+  transform: scale(1.03);
+}
+html[data-theme="guofeng"] .scene__veil {
+  opacity: 1;
+  background:
+    radial-gradient(900px 620px at 12% -8%, rgba(240, 185, 193, .16), transparent 62%),
+    radial-gradient(820px 620px at 92% -4%, rgba(150, 178, 180, .18), transparent 66%),
+    linear-gradient(180deg, rgba(244, 236, 230, .93) 0%, rgba(244, 236, 230, .96) 42%, rgba(244, 236, 230, .975) 100%);
+}
+
+/* 首屏：整幅壁纸 */
+html[data-theme="guofeng"] .hero__photo {
+  position: absolute;
   inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .28;
-  mix-blend-mode: multiply;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E");
+  z-index: 0;
+  background-image: url("../media/shan-shui.jpg");
+  background-size: cover;
+  background-position: 50% 46%;
+  filter: saturate(.95) contrast(1.02);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, .55) 82%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 58%, rgba(0, 0, 0, .55) 82%, transparent 100%);
 }
+html[data-theme="cosmos"] .hero__photo { display: none; }
 
-/* 天头一道极淡的靛青晕染 */
-html[data-theme="guofeng"] body::after {
-  content: "";
-  position: fixed;
-  inset: 0 0 auto 0;
-  height: 320px;
-  z-index: -1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(23, 124, 176, .10), transparent);
+html[data-theme="guofeng"] .hero {
+  min-height: min(78vh, 700px);
+  display: flex;
+  align-items: center;
 }
-
-/* 远山与月 ---------------------------------------------------------------- */
-.hero__moon {
-  position: absolute;
-  top: 16%;
-  left: 50%;
-  width: clamp(120px, 16vw, 190px);
-  height: clamp(120px, 16vw, 190px);
-  margin-left: calc(clamp(120px, 16vw, 190px) / -2);
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, .85), rgba(124, 243, 255, .16) 62%, transparent 72%);
-  box-shadow: 0 0 70px 18px rgba(124, 243, 255, .18);
-  z-index: -2;
-  opacity: .85;
-}
-.hero__art .m1 { fill: #4C8DAE; opacity: .16; }
-.hero__art .m2 { fill: #177CB0; opacity: .22; }
-.hero__art .m3 { fill: #065279; opacity: .30; }
-.hero__art .mist {
-  fill: none;
-  stroke: #7CF3FF;
-  stroke-width: 1;
-  opacity: .35;
-}
-
-html[data-theme="cosmos"] .hero__moon { display: none; }
-
-/* 页面装饰：卷轴细边 ------------------------------------------------------ */
-html[data-theme="guofeng"] .wrap { position: relative; }
-
-html[data-theme="guofeng"] .page-head::after {
+html[data-theme="guofeng"] .hero::after {
   content: "";
   position: absolute;
-  right: -40px; top: -60px;
-  width: 340px; height: 340px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(124, 243, 255, .22), transparent 66%);
-  pointer-events: none;
-}
-
-/* 卡片悬停时透出一点湖蓝 */
-html[data-theme="guofeng"] .section-card:hover {
+  inset: 0;
+  z-index: 1;
   background:
-    radial-gradient(280px 180px at 78% 0%, rgba(124, 243, 255, .22), transparent 70%),
-    rgba(255, 255, 255, .74);
+    linear-gradient(90deg, rgba(32, 26, 22, .74) 0%, rgba(32, 26, 22, .52) 34%, rgba(32, 26, 22, .24) 58%, rgba(32, 26, 22, .04) 80%),
+    linear-gradient(180deg, rgba(32, 26, 22, .30) 0%, rgba(32, 26, 22, .05) 34%, transparent 68%);
+  pointer-events: none;
+}
+html[data-theme="guofeng"] .hero__inner {
+  z-index: 2;
+  max-width: 720px;
+  padding: 12px 0;
+}
+html[data-theme="guofeng"] .hero__eyebrow { color: #F4D9CE; }
+html[data-theme="guofeng"] .hero__eyebrow::before { opacity: .8; }
+html[data-theme="guofeng"] .hero__title {
+  color: #FFF9F4;
+  text-shadow: 0 2px 26px rgba(28, 18, 14, .5);
+}
+html[data-theme="guofeng"] .hero__lede {
+  color: rgba(255, 248, 242, .86);
+  text-shadow: 0 1px 16px rgba(28, 18, 14, .45);
+  font-size: 15.5px;
+}
+html[data-theme="guofeng"] .hero__meta { color: rgba(255, 246, 238, .72); }
+html[data-theme="guofeng"] .hero__meta b { color: #FFF9F4; }
+
+html[data-theme="guofeng"] .btn {
+  border-color: rgba(255, 246, 238, .38);
+  background: rgba(30, 24, 20, .26);
+  color: #FFFAF5;
+  backdrop-filter: blur(6px);
+}
+html[data-theme="guofeng"] .btn:hover {
+  border-color: rgba(255, 246, 238, .7);
+  background: rgba(30, 24, 20, .4);
+  box-shadow: none;
+}
+html[data-theme="guofeng"] .btn--primary {
+  background: #B4462F;
+  border-color: #B4462F;
+  color: #FFF8F3;
+  box-shadow: 0 16px 34px -22px rgba(120, 40, 24, .9);
+}
+html[data-theme="guofeng"] .btn--primary:hover {
+  background: #C8553C;
+  border-color: #C8553C;
+  box-shadow: 0 18px 36px -20px rgba(120, 40, 24, .9);
 }
 
-html[data-theme="guofeng"] .post-item:hover {
-  background: linear-gradient(90deg, rgba(255, 255, 255, .7), rgba(255, 255, 255, .3));
+/* 站点标记：墨块 */
+html[data-theme="guofeng"] .brand__mark {
+  background: #2A2420;
+  color: #F7EFE7;
+  font-size: 14px;
+  letter-spacing: .06em;
+  box-shadow: inset 0 0 0 1px rgba(255, 244, 234, .18);
 }
 
-/* 页脚上方一线山影 */
-.site-foot::before {
+/* 内容卡片：纸面 */
+html[data-theme="guofeng"] .entry,
+html[data-theme="guofeng"] .column-card,
+html[data-theme="guofeng"] .pager a {
+  background: var(--panel);
+  border-color: var(--line);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, .6) inset, 0 18px 36px -34px rgba(74, 52, 42, .75);
+}
+html[data-theme="guofeng"] .entry:hover,
+html[data-theme="guofeng"] .column-card:hover {
+  background: var(--panel-hover);
+  border-color: rgba(180, 70, 47, .28);
+}
+
+html[data-theme="guofeng"] .prose h2 {
+  padding-left: 0;
+  letter-spacing: .04em;
+}
+html[data-theme="guofeng"] .prose h2::before {
   content: "";
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+  display: inline-block;
+  width: 6px; height: 6px;
+  margin-right: .7em;
+  vertical-align: .18em;
+  background: var(--accent);
+  transform: rotate(45deg);
 }
+html[data-theme="guofeng"] .prose h3 { letter-spacing: .04em; }
+
+html[data-theme="guofeng"] .tag { font-family: var(--font-ui); letter-spacing: .02em; }
+
+html[data-theme="guofeng"] .site-foot { background: linear-gradient(180deg, transparent, rgba(238, 228, 220, .7)); }
+
+/* 飘落的樱瓣（在背景层内，位于内容之后） */
+#petals {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .8s ease;
+}
+html[data-theme="guofeng"] #petals { opacity: 1; }
+html[data-theme="cosmos"] #petals { display: none; }

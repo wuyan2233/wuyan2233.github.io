@@ -1,105 +1,142 @@
 {
   "site": {
-    "name": "青冥集",
-    "tagline": "山色入卷，云影成文",
+    "name": "无言",
+    "tagline": "写下来的东西，才算真的想过",
     "github": "https://github.com/wuyan2233",
-    "repo": "https://github.com/wuyan2233/myblog",
-    "updated": "2026-11-04"
+    "repo": "https://github.com/wuyan2233/myblog"
   },
-  "sections": [
+  "columns": [
     {
-      "id": "articles",
-      "name": "文章",
-      "en": "ESSAYS",
-      "ordinal": "壹",
-      "desc": "长文与短札，写设计、写取舍，也写一些不成体系的想法。"
+      "id": "build-a-blog",
+      "name": "从零手写一个博客",
+      "desc": "不用框架、不做构建，从信息架构开始，一点一点把这个站点搭起来。三篇：结构、渲染、换肤。"
     },
     {
-      "id": "code",
-      "name": "代码",
-      "en": "CODE",
-      "ordinal": "贰",
-      "desc": "手写的片段与实验：CSS 变量、渲染器，以及那些足够小的造物。"
-    },
-    {
-      "id": "questions",
-      "name": "疑问",
-      "en": "QUESTIONS",
-      "ordinal": "叁",
-      "desc": "尚未想通的问题，与已经验证过的答案。"
-    },
-    {
-      "id": "resources",
-      "name": "资源",
-      "en": "RESOURCES",
-      "ordinal": "肆",
-      "desc": "色卡、工具、素材与书单。"
+      "id": "color-and-ui",
+      "name": "颜色与界面",
+      "desc": "关于配色、对比度与动效的三次练习。大部分结论来自反复调整，而不是理论。"
     }
   ],
   "posts": [
     {
-      "section": "articles",
-      "slug": "why-qingming",
-      "title": "开卷 · 为什么是一方青纸",
+      "id": "why-two-backgrounds",
+      "type": "note",
+      "title": "为什么要做两套背景",
       "date": "2026-11-04",
-      "tags": ["随笔", "设计"],
-      "excerpt": "开一个博客，最难的不是把页面做出来，而是决定它该长什么样。这一页写的是决定的过程：从一张配色图，到一座远山。"
+      "tags": ["设计", "随笔"],
+      "excerpt": "同一套内容，两个完全不同的样子：一边是深空，一边是山水。做这件事的成本比想象中高，但值得。",
+      "file": "content/posts/why-two-backgrounds.md"
     },
     {
-      "section": "articles",
-      "slug": "two-skins",
-      "title": "一纸两面：古风与星穹",
-      "date": "2026-11-02",
-      "tags": ["设计", "CSS"],
-      "excerpt": "同一副骨架，两套皮肤。古风是宣纸与远山，星穹是深空与星云。写下这套换肤方案是怎么被拆开的，以及为什么改的只是变量。"
-    },
-    {
-      "section": "code",
-      "slug": "css-vars-theme",
-      "title": "以尺规换天：CSS 变量与主题切换",
-      "date": "2026-10-30",
-      "tags": ["CSS", "实现"],
-      "excerpt": "不用切换样式表，也不用复制整个 CSS 文件。一套变量、一个属性、一次落笔，就够换来另一种天色。"
-    },
-    {
-      "section": "code",
-      "slug": "mini-markdown",
-      "title": "百二十行的墨戏：手写一个 Markdown 渲染器",
-      "date": "2026-10-28",
-      "tags": ["JavaScript", "实现"],
-      "excerpt": "不引 marked，也不打包。用一百多行正则与一个循环，把 Markdown 变成可读的篇章——顺便把代码块染上颜色。"
-    },
-    {
-      "section": "questions",
-      "slug": "static-cost",
-      "title": "静态博客真的更省事吗",
-      "date": "2026-10-26",
-      "tags": ["疑问", "取舍"],
-      "excerpt": "说静态博客「零维护」是过分乐观。它省掉的是服务器，换来的是另一些麻烦。这里把账算清楚。"
-    },
-    {
-      "section": "questions",
-      "slug": "video-loop",
-      "title": "循环播放一段星云，浏览器撑得住吗",
-      "date": "2026-10-24",
+      "id": "twenty-second-galaxy",
+      "type": "note",
+      "title": "二十秒的星空",
+      "date": "2026-11-01",
       "tags": ["性能", "视频"],
-      "excerpt": "四 K 五分钟的原片将近四百兆，直接放上网页是灾难。我把它裁成二十秒、约 1.5 MB 的循环，实测下来，代价比想象小。"
+      "excerpt": "把一段五分钟、四百兆的星云素材，压成一点五兆的网页背景，中间只做了四件事。",
+      "file": "content/posts/twenty-second-galaxy.md"
     },
     {
-      "section": "resources",
-      "slug": "chinese-blues",
-      "title": "中国传统色 · 蓝色系",
-      "date": "2026-10-22",
-      "tags": ["色卡", "设计"],
-      "excerpt": "十四种蓝，从雪白到藏蓝。这张色卡是本站的全部配色来源，点一下色块即可复制色值。"
+      "id": "client-side-search",
+      "type": "note",
+      "title": "前端搜索能有多快",
+      "date": "2026-10-29",
+      "tags": ["JavaScript", "实现"],
+      "excerpt": "没有后端，也没有索引服务。把几万字塞进浏览器，边打边搜，延迟大约是一帧。",
+      "file": "content/posts/client-side-search.md"
     },
     {
-      "section": "resources",
-      "slug": "desk-tools",
-      "title": "案头：凿子与纸",
+      "id": "about-typefaces",
+      "type": "note",
+      "title": "字体这件事，我纠结了三天",
+      "date": "2026-10-26",
+      "tags": ["字体", "设计"],
+      "excerpt": "中文网页字体动辄几兆。最后的方案很朴素：不下载字体，把系统自带的宋体用对。",
+      "file": "content/posts/about-typefaces.md"
+    },
+    {
+      "id": "is-static-worth-it",
+      "type": "note",
+      "title": "静态博客到底值不值",
+      "date": "2026-10-23",
+      "tags": ["随笔", "取舍"],
+      "excerpt": "省下的是服务器和运维，付出的是写作时多按的那几行命令。这笔账我算了一遍。",
+      "file": "content/posts/is-static-worth-it.md"
+    },
+    {
+      "id": "tools-i-use",
+      "type": "note",
+      "title": "我常用的几个工具",
       "date": "2026-10-20",
-      "tags": ["工具", "书单"],
-      "excerpt": "做这个小站实际用到的东西。不多，但每一样都用得很顺手。"
+      "tags": ["工具"],
+      "excerpt": "不多，五六个。写字、压视频、量间距、看性能，各司其职。",
+      "file": "content/posts/tools-i-use.md"
+    },
+    {
+      "id": "build-blog-1",
+      "type": "column",
+      "column": "build-a-blog",
+      "index": 1,
+      "title": "先定分区，再谈样式",
+      "date": "2026-10-18",
+      "tags": ["信息架构", "设计"],
+      "excerpt": "主页、笔记、专栏、归档、标签、搜索——这六项定下来之后，剩下的设计才有依据。",
+      "file": "content/posts/build-blog-1.md"
+    },
+    {
+      "id": "build-blog-2",
+      "type": "column",
+      "column": "build-a-blog",
+      "index": 2,
+      "title": "手写一个 Markdown 渲染器",
+      "date": "2026-10-15",
+      "tags": ["JavaScript", "实现"],
+      "excerpt": "不引库，用一百多行把 Markdown 变成页面，顺便把代码块染上颜色。",
+      "file": "content/posts/build-blog-2.md"
+    },
+    {
+      "id": "build-blog-3",
+      "type": "column",
+      "column": "build-a-blog",
+      "index": 3,
+      "title": "换肤：一套结构，两套视觉",
+      "date": "2026-10-12",
+      "tags": ["CSS", "实现"],
+      "excerpt": "变量负责颜色，结构负责骨架，组件负责气质。三件事分开之后，换肤就变成了一次赋值。",
+      "file": "content/posts/build-blog-3.md"
+    },
+    {
+      "id": "color-1",
+      "type": "column",
+      "column": "color-and-ui",
+      "index": 1,
+      "title": "从一张照片里取配色",
+      "date": "2026-10-09",
+      "tags": ["配色", "设计"],
+      "excerpt": "樱花、雾、墨色的屋檐、灯笼的红。把一张图拆成五个角色，颜色就不会乱。",
+      "file": "content/posts/color-1.md"
+    },
+    {
+      "id": "color-2",
+      "type": "column",
+      "column": "color-and-ui",
+      "index": 2,
+      "title": "深色界面的对比度",
+      "date": "2026-10-06",
+      "tags": ["配色", "可读性"],
+      "excerpt": "深色不等于纯黑，浅色文字也不等于纯白。差一点点，眼睛舒服很多。",
+      "file": "content/posts/color-2.md"
+    },
+    {
+      "id": "color-3",
+      "type": "column",
+      "column": "color-and-ui",
+      "index": 3,
+      "title": "动效的克制",
+      "date": "2026-10-03",
+      "tags": ["动效", "体验"],
+      "excerpt": "星子、落樱、换肤时的一次光晕。动效该做的事只有一件：让变化看起来是连续的。",
+      "file": "content/posts/color-3.md"
     }
   ]
 }
