@@ -100,7 +100,7 @@ Windows 也可以双击 `serve.cmd`，然后打开 http://localhost:8080
 首次需要在仓库里打开一次开关：**Settings → Pages → Source 选 “GitHub Actions”**。
 若想改用分支部署，把 Source 改成 `Deploy from a branch`，选 `main` / `(root)` 也可以——本站没有构建步骤，`.nojekyll` 已就位。
 
-站点地址：`https://wuyan2233.github.io/myblog/`
+站点地址：`https://wuyan2233.github.io`
 
 ## 两套风格是怎么分开的
 
