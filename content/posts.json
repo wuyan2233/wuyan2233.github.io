@@ -19,6 +19,15 @@
   ],
   "posts": [
     {
+      "id": "re-upx",
+      "type": "note",
+      "title": "手工脱壳（UPX）",
+      "date": "2026-11-15",
+      "tags": ["逆向", "脱壳"],
+      "excerpt": "用 x64dbg 找 OEP、Scylla 修复 IAT、CFF 处理重定位与 ASLR：一次最朴素的 UPX 脱壳全过程，附九张截图。",
+      "file": "content/posts/re-upx.md"
+    },
+    {
       "id": "why-two-backgrounds",
       "type": "note",
       "title": "为什么要做两套背景",
